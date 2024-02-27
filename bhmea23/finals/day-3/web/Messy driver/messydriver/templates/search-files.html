@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files List</title>
+    <link rel="stylesheet" href="/static/pico.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Found Files</h1>
+        <!-- File List Section -->
+        <div class="file-list">
+            <ul>
+                {{range .}}
+                <li>
+                    <a href="file?file={{.Name}}">{{.Name}} - {{.Size}} bytes</a>
+                    <!-- Delete button/form -->
+                    <form action="/file/delete" method="post" style="display:inline;"> <input type="hidden" name="file"
+                            value="{{.Name}}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

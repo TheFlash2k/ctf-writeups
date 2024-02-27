@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/pico.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">{{.Profile.Nickname}}'s Profile</h1>
+
+        <!-- Display Profile Information -->
+        <div class="profile-info">
+            <h2>Profile Information</h2>
+            <p><strong>Nickname:</strong> {{.Profile.Nickname}}</p>
+            <p><strong>Nationality:</strong> {{.Profile.Nationality}}</p>
+            <p><strong>Number of Files:</strong> {{.FileCount}}</p>
+            <a href="/profile">Update Profile</a>
+        </div>
+    </div>
+</body>
+
+</html>

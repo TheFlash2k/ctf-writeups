@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    environment:
+      FLAG: BHFlagY{REDACTED}
+      SECRET_AGENT: REDACTED

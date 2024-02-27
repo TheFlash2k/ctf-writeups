@@ -1,0 +1,15 @@
+FROM ubuntu:22.04@sha256:b492494d8e0113c4ad3fe4528a4b5ff89faa5331f7d52c5c138196f69ce176a6
+COPY readflag /readflag
+RUN  chown root:root /readflag && chmod 111 /readflag
+WORKDIR /app
+COPY babysbx  run
+RUN apt update && apt install gdb python3 python3-pip tmux git nano -y
+RUN pip install pwntools
+RUN git clone https://github.com/pwndbg/pwndbg
+COPY exploit.py e.py
+COPY entrypoint.sh /ep.sh
+RUN chmod +x /ep.sh
+WORKDIR /app/pwndbg
+RUN ./setup.sh
+WORKDIR /app
+ENTRYPOINT [ "/ep.sh" ]

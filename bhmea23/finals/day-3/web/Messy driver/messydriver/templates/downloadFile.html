@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Downloader</title>
+    <link rel="stylesheet" href="https://unpkg.com/pico.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>File Downloader</h1>
+        <form id="downloadForm">
+            <label for="url">File URL:</label>
+            <input type="text" id="url" name="url" required placeholder="https://example.com/file.txt">
+
+            <label for="headers">Headers (JSON format: [[Key,Value], ...]):</label>
+            <textarea id="headers" name="headers" rows="4"></textarea>
+
+            <input type="submit" value="Download">
+        </form>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const urlInput = document.getElementById('url');
+            const headersInput = document.getElementById('headers');
+
+            // Make an HTTP POST request to the download handler
+            fetch('/download', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    'url': urlInput.value,
+                    'headers': headersInput.value
+                }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const responseDiv = document.getElementById('response');
+                    responseDiv.textContent = data.message;
+                })
+                .catch(error => {
+                    const responseDiv = document.getElementById('response');
+                    responseDiv.textContent = 'Error: ' + error;
+                });
+        });
+    </script>
+</body>
+
+</html>

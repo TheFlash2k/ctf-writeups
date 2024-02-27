@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Your App</h1>
+      <p>Choose an action:</p>
+      <a href="/login" class="btn btn-primary">Login</a>
+      <a href="/register" class="btn btn-secondary">Register</a>
+
+      <script>
+        var nimda = "admin";
+        const urlParams = new URLSearchParams(window.location.search);
+        const qParam = urlParams.get("q");
+        const msgParam = urlParams.get("msg");
+        const regex = /^[a-z+#,.!?]+$/;
+        if (qParam && regex.test(qParam) && qParam.length < 6) {
+          console.log("Valid query parameter:", qParam);
+          eval("a=[" + qParam + "]");
+          const debugMode =
+            a[0] !== "admin" &&
+            a.every((x) => x === "admin") === true &&
+            a.length === 1;
+          if (debugMode) {
+            console.log("debug mode on, Congrats");
+            document.body.innerHTML =
+              "hey! looks like an ez win ? don't get confused with ur msg" +
+              msgParam;
+          } else {
+            console.log("Hello", qParam);
+          }
+        } else {
+          console.log("Invalid query parameter:", qParam);
+        }
+      </script>
+    </div>
+  </body>
+</html>
