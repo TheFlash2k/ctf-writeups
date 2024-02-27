@@ -1,0 +1,27 @@
+{
+"manifest_version"  :   3 ,
+"name"              :   "BLACK HAT DFIR",
+"version"           :   "1",
+"description"       :   "Welcome To blackhat",
+"permissrions"      :   ["activeTab","alarms"],
+"action":           {
+                        "default_popup"     : "popup.html",
+                        "default_icon":     {
+                                                "16"    : "images/icon16.png",
+                                                "17"    : "images/icon17.png",
+                                                "15"    : "images/icon15.png"
+                                            }
+                    },
+"content_scripts"   :[
+                    {
+                          "matches": ["<all_urls>"],
+                          "js": ["content.js"]
+                        }
+                      ],
+"icons":            {
+                        "16": "images/icon16.png",
+                        "17": "images/icon17.png",
+                        "15": "images/icon15.png"
+                    }
+
+}

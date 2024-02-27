@@ -1,0 +1,13 @@
+{
+  "name": "Wasm",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Do Something using wasm",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'self' 'wasm-unsafe-eval'"
+  }
+}

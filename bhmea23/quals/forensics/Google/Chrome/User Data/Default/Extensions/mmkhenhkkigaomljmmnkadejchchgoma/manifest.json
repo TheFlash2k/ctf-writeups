@@ -1,0 +1,11 @@
+{
+  "name": "page killer",
+  "action": {},
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "NO NO NO NO NO NON ONO NO ON",
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
